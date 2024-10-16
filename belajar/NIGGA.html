@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="flex-1">
+        <div>
+            navbar
+        </div>
+        <div>
+            <div>
+                <?php
+                $a = 4;
+                $b = 9;
+                $c = $a + $b;
+                echo $c;
+                ?>
+            </div>
+            <div class="flex">
+                <form class="border rounded-xl bg-slate-100 shadow-2xl flex flex-col flex-wrap gap-5 px-5 py-5 ">
+                    <p><input type="text" name="nama" placeholder="nigga Nama" id=""></p>
+                    <p><input type="text" name="asal" placeholder="asal sola" id=""></p>
+                    <p><input type="text" name="tempat" placeholder="Masukkan Tempat Lahir" id=""></p>
+                    <p><input type="date" name="tanggal" id=""></p>
+                    <p><input type="radio" name="jk" value="laki-laki">Laki laki</p>
+                    <p><input type="radio" name="jk" value="perempuan">perempuan</p>
+                    <p><input type="text" name="alamat" placeholder="masukkan alamat" id=""></p>
+                    <p><input type="number" name="nomor" placeholder="masukkan nomor telepon" id=""></p>
+                    <p>
+                        <select name="agama">
+                        <option>Islam</option>
+                        <option>Kristen</option>
+                        <option>Hindu</option>
+                        <option>Budha</option>
+                        <option>Atheis</option>
+                        </select>
+                    </p>
+                    <p><input type="email" name="email" placeholder="masukkan email" id=""></p>
+                    <p>
+                        <select name="bid_study">
+                        <option>Islam</option>
+                        <option>Kristen</option>
+                        <option>Hindu</option>
+                        <option>Budha</option>
+                        <option>Atheis</option>
+                        </select>
+                    </p>
+                    <p><input type="button" name="tanggal" value="Masuk"></p>                   
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
