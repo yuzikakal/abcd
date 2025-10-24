@@ -27,9 +27,15 @@ if(isset($_POST['daftar'])){
     $nisn = $_POST['nisn'];
     $bid_study = $_POST['bid_study'];
 
+    $cek = $db->query("SELECT nisn FROM pendaftar WHERE nisn = '$nisn'");
+    if ($cek->num_rows > 0) {
+    echo "<script>alert('NISN sudah terdaftar!'); window.history.back();</script>";
+    exit();
+    }
+
     // buat query
-    $sql = "INSERT INTO pendaftar (nama, asal, tempat, tanggal, jk, alamat, nomor, agama, email, nisn, bid_study) 
-    VALUES ('$nama', '$asal', '$tempat', '$tanggal', '$jenis_kel', '$rumah', '$nomor', '$agama', '$email', '$nisn', '$bid_study')";
+    $sql = "INSERT INTO pendaftar (nama, asal, tempat, tanggal, jk, alamat, nomor, agama, email, nisn, bid_study, setatus) 
+    VALUES ('$nama', '$asal', '$tempat', '$tanggal', '$jenis_kel', '$rumah', '$nomor', '$agama', '$email', '$nisn', '$bid_study', 'menunggu')";
     
     if ($db->query($sql)) {
         session_start();
@@ -52,8 +58,12 @@ if(isset($_POST['daftar'])){
 
 }*/
 
-} catch (mysqli_sql_exception) {
-   echo "<script>alert('NISN sudah terdaftar'); window.history.back();</script>";
+} catch (mysqli_sql_exception $e) {
+    if (str_contains($e->getMessage(), 'Duplicate entry')) {
+        echo "<script>alert('NISN sudah terdaftar!'); window.history.back();</script>";
+    } else {
+        echo "<script>alert('Terjadi kesalahan: " . addslashes($e->getMessage()) . "'); window.history.back();</script>";
+    }
 }
 
 
